@@ -26,18 +26,28 @@ namespace GestBanque
                 Titulaire = titulaire
             };
 
+            Courant courant2 = new Courant()
+            {
+                Numero = "00002",
+                LigneDeCredit = 300,
+                Titulaire = titulaire
+            };
+
             Banque TechnoBanque = new Banque()
             {
                 Nom = "TechnoBanque" 
             };
 
             TechnoBanque.Ajouter(courant);
+            TechnoBanque.Ajouter(courant2);
 
             TechnoBanque["00001"].Depot(200);
+            TechnoBanque["00002"].Depot(200);
             TechnoBanque["00001"].Retrait(500);
 
 
-            Console.WriteLine(TechnoBanque["00001"].Solde);
+            Console.WriteLine($"Solde du compte 00001 : {TechnoBanque["00001"].Solde}");
+            Console.WriteLine($"Avoir des compte de {titulaire.Nom} {titulaire.Prenom} : {TechnoBanque.AvoirDesComptes(titulaire)}");
         }
     }
 }

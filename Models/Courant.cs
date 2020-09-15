@@ -1,11 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 
 namespace Models
 {
     public class Courant
     {
+        public static double operator+(double d, Courant courant)
+        {
+            return ((d > 0D) ? d : 0D) + ((courant.Solde > 0D) ? courant.Solde : 0D);
+        }
+
         private string _numero;
         private double _ligneDeCredit;
         private double _solde;
