@@ -55,6 +55,7 @@ namespace GestBanque
             TechnoBanque["00001"].Retrait(500);
             TechnoBanque["00003"].Depot(500);
             TechnoBanque["00003"].Retrait(200);
+            TechnoBanque["00001"].AppliquerInteret();
 
 
             Console.WriteLine($"Solde du compte 00001 : {TechnoBanque["00001"].Solde}");

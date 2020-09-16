@@ -30,5 +30,10 @@ namespace Models
             if(oldSolde != Solde)
                 DernierRetrait = DateTime.Now;
         }
+
+        protected override double CalculInteret()
+        {
+            return Solde * .045;
+        }
     }
 }
