@@ -39,8 +39,7 @@ namespace GestBanque
                 Titulaire = titulaire
             };
 
-            epargne1.Depot(500);
-            epargne1.Retrait(200);
+            
 
             Banque TechnoBanque = new Banque()
             {
@@ -49,10 +48,13 @@ namespace GestBanque
 
             TechnoBanque.Ajouter(courant);
             TechnoBanque.Ajouter(courant2);
+            TechnoBanque.Ajouter(epargne1);
 
             TechnoBanque["00001"].Depot(200);
             TechnoBanque["00002"].Depot(200);
             TechnoBanque["00001"].Retrait(500);
+            TechnoBanque["00003"].Depot(500);
+            TechnoBanque["00003"].Retrait(200);
 
 
             Console.WriteLine($"Solde du compte 00001 : {TechnoBanque["00001"].Solde}");
