@@ -33,6 +33,15 @@ namespace GestBanque
                 Titulaire = titulaire
             };
 
+            Epargne epargne1 = new Epargne()
+            {
+                Numero = "00003",
+                Titulaire = titulaire
+            };
+
+            epargne1.Depot(500);
+            epargne1.Retrait(200);
+
             Banque TechnoBanque = new Banque()
             {
                 Nom = "TechnoBanque" 

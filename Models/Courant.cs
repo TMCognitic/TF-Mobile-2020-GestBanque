@@ -5,30 +5,9 @@ using System.Text;
 
 namespace Models
 {
-    public class Courant
+    public class Courant : Compte
     {
-        public static double operator+(double d, Courant courant)
-        {
-            return ((d > 0D) ? d : 0D) + ((courant.Solde > 0D) ? courant.Solde : 0D);
-        }
-
-        private string _numero;
         private double _ligneDeCredit;
-        private double _solde;
-        private Personne _titulaire;
-
-        public string Numero
-        {
-            get
-            {
-                return _numero;
-            }
-
-            set
-            {
-                _numero = value;
-            }
-        }
 
         public double LigneDeCredit
         {
@@ -46,51 +25,9 @@ namespace Models
             }
         }
 
-        public double Solde
+        public override void Retrait(double montant)
         {
-            get
-            {
-                return _solde;
-            }
-
-            private set
-            {
-                _solde = value;
-            }
+            Retrait(montant, LigneDeCredit);
         }
-
-        public Personne Titulaire
-        {
-            get
-            {
-                return _titulaire;
-            }
-
-            set
-            {
-                _titulaire = value;
-            }
-        }
-
-        public void Depot(double montant)
-        {
-            if (!(montant > 0))
-                return;
-
-            Solde += montant;
-        }
-
-        public void Retrait(double montant)
-        {
-            if (!(montant > 0))
-                return; //à changer en exception par la suite
-
-            if (Solde - montant < -LigneDeCredit)
-                return; //à changer en exception par la suite
-
-            Solde -= montant;
-        }
-
-
     }
 }
