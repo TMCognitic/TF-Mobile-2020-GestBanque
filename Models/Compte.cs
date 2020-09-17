@@ -1,4 +1,6 @@
-﻿namespace Models
+﻿using System.Net.Sockets;
+
+namespace Models
 {
     public abstract class Compte : ICustomer, IBanker
     {
@@ -18,7 +20,7 @@
                 return _numero;
             }
 
-            set
+            private set
             {
                 _numero = value;
             }
@@ -44,10 +46,22 @@
                 return _titulaire;
             }
 
-            set
+            private set
             {
                 _titulaire = value;
             }
+        }
+
+        public Compte(string numero, Personne titulaire)
+        {
+            Numero = numero;
+            Titulaire = titulaire;
+        }
+
+        public Compte(string numero, Personne titulaire, double solde)
+            : this(numero, titulaire)
+        {
+            Solde = solde;
         }
 
         public void AppliquerInteret()

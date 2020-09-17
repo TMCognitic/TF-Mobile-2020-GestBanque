@@ -12,33 +12,11 @@ namespace GestBanque
             //titulaire.Prenom = "John";
             //titulaire.DateNaiss = new DateTime(1970, 1, 1);
             //ou
-            Personne titulaire = new Personne()
-            {
-                Nom = "Doe",
-                Prenom = "John",
-                DateNaiss = new DateTime(1970, 1, 1)
-            };
+            Personne titulaire = new Personne("Doe", "John", new DateTime(1970, 1, 1));
 
-            Courant courant = new Courant()
-            {
-                Numero = "00001",
-                LigneDeCredit = 300,
-                Titulaire = titulaire
-            };
-
-            Courant courant2 = new Courant()
-            {
-                Numero = "00002",
-                LigneDeCredit = 300,
-                Titulaire = titulaire
-            };
-
-            Epargne epargne1 = new Epargne()
-            {
-                Numero = "00003",
-                Titulaire = titulaire
-            };
-
+            Courant courant = new Courant("00001", 300, titulaire);
+            Courant courant2 = new Courant("00002", 300, titulaire);
+            Epargne epargne1 = new Epargne("00003", titulaire);
             
 
             Banque TechnoBanque = new Banque()

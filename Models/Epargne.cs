@@ -22,6 +22,17 @@ namespace Models
             }
         }
 
+        public Epargne(string numero, Personne titulaire)
+            : base(numero, titulaire)
+        {
+        }
+
+        public Epargne(string numero, Personne titulaire, double solde, DateTime dernierRetrait)
+            : base(numero, titulaire, solde)
+        {
+            DernierRetrait = dernierRetrait;
+        }
+
         public override void Retrait(double montant)
         {
             double oldSolde = Solde;
