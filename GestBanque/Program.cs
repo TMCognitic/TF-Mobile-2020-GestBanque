@@ -24,15 +24,22 @@ namespace GestBanque
                 Nom = "TechnoBanque" 
             };
 
-            TechnoBanque.Ajouter(courant);
-            TechnoBanque.Ajouter(courant2);
-            TechnoBanque.Ajouter(epargne1);
+            try
+            {
+                TechnoBanque.Ajouter(courant);
+                TechnoBanque.Ajouter(courant2);
+                TechnoBanque.Ajouter(epargne1);
 
-            TechnoBanque["00001"].Depot(200);
-            TechnoBanque["00002"].Depot(200);
-            TechnoBanque["00001"].Retrait(500);
-            TechnoBanque["00003"].Depot(500);
-            TechnoBanque["00003"].Retrait(200);
+                TechnoBanque["00001"].Depot(200);
+                TechnoBanque["00002"].Depot(200);
+                TechnoBanque["00001"].Retrait(500);
+                TechnoBanque["00003"].Depot(500);
+                TechnoBanque["00003"].Retrait(700);            
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
             TechnoBanque["00001"].AppliquerInteret();
 
 

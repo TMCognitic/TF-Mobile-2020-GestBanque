@@ -19,7 +19,7 @@ namespace Models
             set
             {
                 if (value < 0)
-                    return; //à changer en exception par la suite
+                    throw new InvalidOperationException();
 
                 _ligneDeCredit = value;
             }

@@ -1,4 +1,5 @@
-﻿using System.Net.Sockets;
+﻿using System;
+using System.Net.Sockets;
 
 namespace Models
 {
@@ -73,7 +74,7 @@ namespace Models
         public void Depot(double montant)
         {
             if (!(montant > 0))
-                return;
+                throw new ArgumentOutOfRangeException();
 
             Solde += montant;
         }
@@ -86,10 +87,10 @@ namespace Models
         protected void Retrait(double montant, double ligneDeCredit)
         {
             if (!(montant > 0))
-                return; //à changer en exception par la suite
+                throw new ArgumentOutOfRangeException();
 
             if (Solde - montant < -ligneDeCredit)
-                return; //à changer en exception par la suite
+                throw new SoldeInsuffisantException();
 
             Solde -= montant;
         }
