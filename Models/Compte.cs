@@ -1,4 +1,6 @@
-﻿namespace Models
+﻿using System;
+
+namespace Models
 {
     public abstract class Compte : ICustomer, IBanker
     {
@@ -50,6 +52,19 @@
             }
         }
 
+        public virtual double LigneDeCredit
+        {
+            get
+            {
+                return 0;
+            }
+
+            set
+            {
+                throw new InvalidOperationException("La ligne de crédit ne peut être affectée par le fonctionnement par défaut!");
+            }
+        }
+
         public void AppliquerInteret()
         {
             //Template Method (Design Pattern)
@@ -66,15 +81,10 @@
 
         public virtual void Retrait(double montant)
         {
-            Retrait(montant, 0D);
-        }
-
-        protected void Retrait(double montant, double ligneDeCredit)
-        {
             if (!(montant > 0))
                 return; //à changer en exception par la suite
 
-            if (Solde - montant < -ligneDeCredit)
+            if (Solde - montant < -LigneDeCredit)
                 return; //à changer en exception par la suite
 
             Solde -= montant;

@@ -9,7 +9,7 @@ namespace Models
     {
         private double _ligneDeCredit;
 
-        public double LigneDeCredit
+        public override double LigneDeCredit
         {
             get
             {
@@ -23,11 +23,6 @@ namespace Models
 
                 _ligneDeCredit = value;
             }
-        }
-
-        public override void Retrait(double montant)
-        {
-            Retrait(montant, LigneDeCredit);
         }
 
         protected override double CalculInteret()
