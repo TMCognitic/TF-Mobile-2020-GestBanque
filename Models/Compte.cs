@@ -10,6 +10,9 @@ namespace Models
             return ((d > 0D) ? d : 0D) + ((courant.Solde > 0D) ? courant.Solde : 0D);
         }
 
+        //mise en place d'un pattern observer (cependant pour finaliser celui-ci il faudrait une interface déclarant l'event)
+        public event PassageEnNegatifDelegate PassageEnNegatifEvent;
+
         private string _numero;
         private double _solde;
         private Personne _titulaire;
@@ -63,6 +66,11 @@ namespace Models
             : this(numero, titulaire)
         {
             Solde = solde;
+        }
+
+        protected void RaisePassageEnNegatifEvent()
+        {
+            PassageEnNegatifEvent?.Invoke(this);
         }
 
         public void AppliquerInteret()

@@ -22,12 +22,20 @@ namespace Models
 
         public void Ajouter(Compte compte)
         {
+            compte.PassageEnNegatifEvent += PassageEnNegatifAction;
             _comptes.Add(compte.Numero, compte);
-        }
+        }        
 
         public void Supprimer(string numero)
         {
+            Compte compte = this[numero];
+            compte.PassageEnNegatifEvent -= PassageEnNegatifAction;
             _comptes.Remove(numero);
+        }
+
+        private void PassageEnNegatifAction(Compte compte)
+        {
+            Console.WriteLine($"Le compte {compte.Numero} vient de passer en négatif!");
         }
 
         public double AvoirDesComptes(Personne titulaire)
